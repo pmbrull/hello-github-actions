@@ -43,3 +43,30 @@ Create a file titled `.github/workflows/main.yml` with the following content:
 name: A workflow for my Hello World file
 on: push
 ```
+
+Here's what it means:
+
+* `name`: A workflow for my Hello World file gives your workflow a name. This name appears on any pull request or in the Actions tab. The name is especially useful when there are multiple workflows in your repository.
+* `on`: `push` indicates that your workflow will execute anytime code is pushed to your repository, using the `push` event.
+
+Next, we need to specify a job or jobs to run.
+
+### Actions
+
+Workflows piece together jobs, and jobs piece together steps. We'll now create a job that runs an action. Actions can be used from within the same repository, from any other public repository, or from a published Docker container image. We'll use an action that we'll define in this repository.
+
+### Step 4: Use an action in your workflow
+
+Append the following content to `.github/workflows/main.yml`:
+
+```yml
+jobs:
+  build:
+    name: Hello world action
+    runs-on: ubuntu-latest    
+    steps:
+    - uses: actions/checkout@master
+    - uses: ./action-a
+      env:
+        MY_NAME: "Mona"
+```
