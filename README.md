@@ -23,4 +23,23 @@ An entrypoint script must exist in our repository so that Docker has something t
 sh -c "echo Hello world my name is $MY_NAME"
 ```
 
-Now, stage and push.
+Next, we'll define a workflow that uses the GitHub Action.
+
+### Workflow Files
+
+Workflows are defined in special files in the `.github/workflows` directory, named `main.yml`.
+
+Workflows can execute based on your chosen event. For this lab, we'll be using the `push` event.
+
+We'll break down each line of the workflow in the next step.
+
+### Step 3: Add a workflow file
+
+First, we'll add the bones of the workflow. We'll add the action itself in a later step:
+
+Create a file titled `.github/workflows/main.yml` with the following content:
+
+```yml
+name: A workflow for my Hello World file
+on: push
+```
