@@ -2,8 +2,7 @@
 
 This course will walk you through writing your first action and using it with a workflow file. 
 
-**Ready to get started? Navigate to the first issue.**
-
+### Step 1: Create a Dockerfile with an ENTRYPOINT
 
 You'll notice at the end of the Dockerfile, we refer to an entrypoint script.
 
@@ -70,3 +69,23 @@ jobs:
       env:
         MY_NAME: "Mona"
 ```
+
+We just added an action block to your workflow file! Here are some important details about why each part of the block exists and what each part does.
+
+* `jobs`: is the base component of a workflow run.
+* `build`: is the identifier we're attaching to this job.
+* `name`: is the name of the job, this is displayed on GitHub when the workflow is running.
+* `steps`: the linear sequence of operations that make up a job.
+* `uses actions/checkout@master` uses an action called checkout to use a copy of our code repository.
+* `uses: ./action-a` uses an action named `action-a` by referencing the path to the action's directory, relative to our repository.
+* `env`: is used to specify the environment variables that will be available to your action in the runtime environment. In this case, the environment variable is `MY_NAME`, and it is currently initialized to `"Mona"`.
+
+### Your action is about to be triggered!
+
+Your repository now contains everything it needs for the action to be defined (in the `./action-a/` folder) and everything it needs to be triggered (in the `./github/main.yml` file).
+
+The action will run anytime a commit is recognized on the remote repository.
+
+### Seeing your Action in action
+
+You can see the action status reported below, or you can click the "Actions" tab in your repository. From there you will see the actions that have run, and you can click on the action's "Log" link to view details.
